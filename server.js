@@ -2,13 +2,13 @@ var http = require('http');
 var fs   = require('fs');
 var path = require('path');
 var mime = require('mime');
-var cach = {};
+var cache = {};
 
 // Helper for handle 404 erros
 function send404(response) {
   response.writeHead(404, {'Content-Type}': 'text/plain'});
   response.write('Error 404: resource not found.');
-  response.wnd();
+  response.end();
 }
 
 
@@ -42,3 +42,22 @@ function serveStatic(response, cache, absPath) {
     });
   }
 }
+
+//Creates de http server
+var server = http.createServer(function(request, response) {
+  var filePath = false;
+  filepath = request.url == '/'? 
+    'public/index.html': 
+    'public' + request.url;
+  
+  var absPath = './' + filePath;
+  serveStatic(response, cache, absPath);
+});
+
+//Listen to a port
+server.listen(3000, function() {
+  console.log("Server listening on port 3000.");
+});
+
+
+
