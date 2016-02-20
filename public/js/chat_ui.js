@@ -10,7 +10,7 @@ function processUserInput(chatApp, socket) {
   var message = $("#send-message").val();
   var systemMessage;
 
-  if(message.chartAt(0) == '/') {
+  if(message.charAt(0) == '/') {
     systemMessage = chatApp.processCommand(message);
     if (systemMessage)
       $("#messages").append(divSystemContentElement(systemMessage));
@@ -49,7 +49,7 @@ $(document).ready(function() {
   socket.on('rooms', function(rooms) {
     $("#room-list").empty();
     for (var room in rooms){
-      room = room.substring(1, room.length);
+      room = room.substring(0, room.length);
       if(room != '')
        $("#room-list").append(divEscapedContentElement(room));
     }
