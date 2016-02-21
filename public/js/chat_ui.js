@@ -1,5 +1,5 @@
 function divEscapedContentElement(message) {
-  return $('<div></div>').text(message)
+  return $('<div></div>').text(message);
 }
 
 function divSystemContentElement(message) {
@@ -50,7 +50,7 @@ $(document).ready(function() {
     $("#room-list").empty();
     for (var room in rooms){
       room = room.substring(0, room.length);
-      if(room != '')
+      if(room !== '')
        $("#room-list").append(divEscapedContentElement(room));
     }
 

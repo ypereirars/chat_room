@@ -28,7 +28,7 @@ function sendFile(response, filePath, fileContents) {
 // If the file doesn't exist, an HTTP 404 error is returned.
 function serveStatic(response, cache, absPath) {
   if(cache[absPath])
-    sendFile(response, absPath, cache[absPath])
+    sendFile(response, absPath, cache[absPath]);
   else {
     fs.exists(absPath, function(exists) {
       if(exists) {
@@ -60,7 +60,7 @@ var server = http.createServer(function(request, response) {
 });
 
 
-chatServer.listen(server)
+chatServer.listen(server);
 //Listen to a port
 server.listen(3000, function() {
   console.log("Server listening on port 3000.");

@@ -1,12 +1,12 @@
 var Chat = function (socket) {
   this.socket = socket;
-}
+};
 
 Chat.prototype.sendMessage = function (room, text) {
   var message = {
     room: room,
     text: text
-  }
+  };
   this.socket.emit('message', message);
 };
 
@@ -41,5 +41,5 @@ Chat.prototype.processCommand = function (command) {
       break;
   }
 
-  return message
+  return message;
 };
